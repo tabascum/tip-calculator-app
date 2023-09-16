@@ -1,19 +1,21 @@
 <template>
   <section class="tip-container">
-    <div class="tip-content">
-      <div class="text">
-        <p>Tip Amout</p>
-        <p>/ per person</p>
+    <article class="tip-wrapper">
+      <div class="tip-content">
+        <div class="text">
+          <p>Tip Amount</p>
+          <p>/ per person</p>
+        </div>
+        <p class="total">$Total</p>
       </div>
-      <p class="total">Total</p>
-    </div>
-    <div class="tip-content">
-      <div class="text">
-        <p>Tip Amout</p>
-        <p>/ per person</p>
+      <div class="tip-content">
+        <div class="text">
+          <p>Tip Amount</p>
+          <p>/ per person</p>
+        </div>
+        <p class="total">$Total</p>
       </div>
-      <p class="total">Total</p>
-    </div>
+    </article>
     <button class="reset-button">RESET</button>
   </section>
 </template>
@@ -32,10 +34,27 @@
   padding: 2rem;
 }
 
+.tip-wrapper {
+  display: inherit;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
 .tip-content {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.text:nth-child(2) {
+  font-weight: lighter !important;
+}
+
+.total {
+  font-size: 2rem;
+  color: var(--strong-cyan);
 }
 
 .reset-button {
@@ -52,5 +71,11 @@
 
 .reset-button:hover {
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .tip-container {
+    width: 100%;
+  }
 }
 </style>

@@ -15,6 +15,7 @@
   background-color: var(--white);
   box-shadow: 0.2rem 0.2rem 0.7rem rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
+  gap: 1.5rem;
 }
 
 @media (max-width: 768px) {

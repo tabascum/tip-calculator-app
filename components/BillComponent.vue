@@ -3,8 +3,9 @@
     <article>
       <div class="content-container">
         <div class="input-container">
-          <p for="bill-total">Bill</p>
-          <input type="text" name="bill-total" />
+          <p>Bill</p>
+          <span class="dollar-icon"></span>
+          <input type="text" name="bill-total" id="bill-total" />
         </div>
 
         <div class="buttons-container">
@@ -15,13 +16,19 @@
             <ButtonComponent class="button-15">15%</ButtonComponent>
             <ButtonComponent class="button-25">25%</ButtonComponent>
             <ButtonComponent class="button-50">50%</ButtonComponent>
-            <input class="custom" type="text" placeholder="Custom" />
+            <input
+              id="custom"
+              class="custom"
+              type="text"
+              placeholder="Custom"
+            />
           </div>
         </div>
 
         <div class="input-container">
-          <p for="people-total">Number of People</p>
-          <input type="text" name="people-total" />
+          <p>Number of People</p>
+          <span class="person-icon"></span>
+          <input type="text" name="people-total" id="people-total" />
         </div>
       </div>
     </article>
@@ -32,16 +39,10 @@
 .bill-container {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   height: auto;
   width: 35vw;
-  padding: 1rem;
   color: var(--dark-grayish-cyan);
-}
-
-article {
-  height: 100%;
-  justify-content: space-between;
 }
 
 .input-container {
@@ -49,15 +50,54 @@ article {
   flex-direction: column;
 }
 
+span {
+  position: relative;
+  height: 1rem;
+  width: 0.8rem;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.dollar-icon::before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: url("../assets/images/icon-dollar.svg") no-repeat;
+  top: 2.5rem;
+  left: 1.2rem;
+  transform: translate(-50%, -50%);
+}
+
+.person-icon::before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: url("../assets/images/icon-person.svg") no-repeat;
+  top: 2.4rem;
+  left: 1.2rem;
+  transform: translate(-50%, -50%);
+}
+
 .content-container {
   height: 100%;
+  width: 100%;
   display: flex;
-  padding-inline: 1rem;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1rem;
+}
+
+.buttons-container p {
+  margin-block-end: 1rem;
 }
 
 .buttons {
+  width: 100%;
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: repeat(3, 1fr);
@@ -66,6 +106,25 @@ article {
   grid-template-areas:
     "button-5 button-10 button-15"
     "button-25 button-50 custom";
+}
+
+@media (max-width: 768px) {
+  .bill-container {
+    width: 100%;
+  }
+  .content-container {
+    padding: 0.5rem;
+  }
+  .buttons {
+    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.8rem 0.8rem;
+    grid-template-areas:
+      "button-5 button-10"
+      "button-15 button-25"
+      "button-50 custom";
+  }
 }
 
 .button-5 {
@@ -89,9 +148,28 @@ article {
 
 input {
   padding: 0.6rem 1rem;
-  background-color: var(--light-grayish-cyan);
+  background-color: var(--very-light-grayish-cyan);
   border-radius: 0.3rem;
   border: none;
   width: 100%;
+  color: var(--very-dark-cyan);
+  font-size: 1rem;
+  direction: ltr;
+  text-align: end;
+  border: 0.15rem solid transparent;
+}
+
+input:focus-visible {
+  outline: 0.15rem solid var(--strong-cyan);
+}
+
+::placeholder {
+  text-align: center;
+}
+::-webkit-input-placeholder {
+  text-align: center;
+}
+::-moz-placeholder {
+  text-align: center;
 }
 </style>
