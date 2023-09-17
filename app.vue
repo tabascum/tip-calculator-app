@@ -7,7 +7,7 @@
 
 <style>
 main {
-  height: 80vh;
+  height: 70vh;
   width: minmax(375px, 1440px);
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@ main img {
 
 @media (max-width: 768px) {
   main {
-    height: 100%;
+    height: 80vh;
     gap: 2rem;
   }
 }

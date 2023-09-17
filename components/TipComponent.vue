@@ -6,21 +6,23 @@
           <p>Tip Amount</p>
           <p>/ per person</p>
         </div>
-        <p class="total">$Total</p>
+        <p class="total">$0.00</p>
       </div>
       <div class="tip-content">
         <div class="text">
-          <p>Tip Amount</p>
+          <p>Total</p>
           <p>/ per person</p>
         </div>
-        <p class="total">$Total</p>
+        <p class="total">$0.00</p>
       </div>
     </article>
     <button class="reset-button">RESET</button>
   </section>
 </template>
 
-<style>
+<script setup></script>
+
+<style scoped>
 .tip-container {
   width: 35vw;
   height: auto;
@@ -64,7 +66,7 @@
   border: none;
   opacity: 0.3;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   background-color: var(--strong-cyan);
   transition: all 0.5s;
 }

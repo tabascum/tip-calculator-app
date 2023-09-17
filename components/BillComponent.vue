@@ -5,7 +5,12 @@
         <div class="input-container">
           <p>Bill</p>
           <span class="dollar-icon"></span>
-          <input type="text" name="bill-total" id="bill-total" />
+          <input
+            type="text"
+            name="bill-total"
+            id="bill-total"
+            placeholder="0"
+          />
         </div>
 
         <div class="buttons-container">
@@ -26,14 +31,51 @@
         </div>
 
         <div class="input-container">
-          <p>Number of People</p>
+          <div class="input-container-header">
+            <p>Number of People</p>
+            <p>Can't be zero</p>
+          </div>
           <span class="person-icon"></span>
-          <input type="text" name="people-total" id="people-total" />
+          <input
+            type="text"
+            name="people-total"
+            id="people-total"
+            placeholder="0"
+          />
         </div>
       </div>
     </article>
   </section>
 </template>
+
+<script setup>
+const predefinedPercentages = [10, 15, 20, 25, 30];
+
+let billTotal = 0;
+let tipPercentage = predefinedPercentages[0];
+let customTip = 0;
+let numPeople = 1;
+
+const tipAmount = computed(() => {
+  if (customTip) {
+    return customTip;
+  } else {
+    return billTotal * (tipPercentage / 100);
+  }
+});
+
+const totalAmount = computed(() => {
+  return billTotal + tipAmount.value;
+});
+
+const tipPerPerson = computed(() => {
+  return tipAmount.value / numPeople;
+});
+
+const totalPerPerson = computed(() => {
+  return totalAmount.value / numPeople;
+});
+</script>
 
 <style scoped>
 .bill-container {
@@ -50,9 +92,19 @@
   flex-direction: column;
 }
 
+.input-container-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-container-header p:nth-child(2) {
+  display: none;
+  color: var(--error);
+}
+
 span {
   position: relative;
-  height: 1rem;
+  height: 1.1rem;
   width: 0.8rem;
 }
 
@@ -67,7 +119,7 @@ img {
   width: 100%;
   content: "";
   background: url("../assets/images/icon-dollar.svg") no-repeat;
-  top: 2.5rem;
+  top: 2.55rem;
   left: 1.2rem;
   transform: translate(-50%, -50%);
 }
@@ -78,7 +130,7 @@ img {
   width: 100%;
   content: "";
   background: url("../assets/images/icon-person.svg") no-repeat;
-  top: 2.4rem;
+  top: 2.55rem;
   left: 1.2rem;
   transform: translate(-50%, -50%);
 }
@@ -147,29 +199,37 @@ img {
 }
 
 input {
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: var(--very-light-grayish-cyan);
   border-radius: 0.3rem;
   border: none;
   width: 100%;
   color: var(--very-dark-cyan);
-  font-size: 1rem;
+  font-size: 1.2rem;
   direction: ltr;
   text-align: end;
-  border: 0.15rem solid transparent;
+  outline: 0.1rem solid transparent;
 }
 
 input:focus-visible {
-  outline: 0.15rem solid var(--strong-cyan);
+  outline: 0.1rem solid var(--strong-cyan);
+}
+
+input.error {
+  outline: 0.1rem solid var(--error);
+}
+
+#custom::placeholder {
+  text-align: center;
 }
 
 ::placeholder {
-  text-align: center;
+  text-align: end;
 }
 ::-webkit-input-placeholder {
-  text-align: center;
+  text-align: end;
 }
 ::-moz-placeholder {
-  text-align: center;
+  text-align: end;
 }
 </style>

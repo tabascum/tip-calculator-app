@@ -14,7 +14,7 @@ button {
   border-radius: 0.3rem;
   color: var(--white);
   background-color: var(--very-dark-cyan);
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: all 0.5s;
   cursor: pointer;
 }
