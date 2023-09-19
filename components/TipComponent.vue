@@ -6,24 +6,17 @@
           <p>Tip Amount</p>
           <p>/ per person</p>
         </div>
-        <p class="total">${{ resultTipStore.tipAmountPerPerson }}</p>
+        <p class="total">${{ resultTipStore.tipAmountPerson.toFixed(2) }}</p>
       </div>
       <div class="tip-content">
         <div class="text">
           <p>Total</p>
           <p>/ per person</p>
         </div>
-        <p class="total">${{ resultTipStore.totalPerPerson }}</p>
-      </div>
-      <div class="tip-content">
-        <div class="text">
-          <p>Total</p>
-          <p>/ per person</p>
-        </div>
-        <p class="total">${{ resultTipStore.tipAmountPerPerson }}</p>
+        <p class="total">${{ resultTipStore.totalPerson.toFixed(2) }}</p>
       </div>
     </article>
-    <button class="reset-button">RESET</button>
+    <button class="reset-button" @click="resetFields">RESET</button>
   </section>
 </template>
 
@@ -31,6 +24,12 @@
 import { useTipStore } from "~/stores/TipStore";
 
 const resultTipStore = useTipStore();
+
+const resetFields = () => {
+  resultTipStore.setBillTotal(null);
+  resultTipStore.setCustomTip(null);
+  resultTipStore.setNumberOfPeople(null);
+};
 </script>
 
 <style scoped>

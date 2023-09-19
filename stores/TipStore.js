@@ -3,42 +3,46 @@ import { defineStore } from "pinia";
 
 export const useTipStore = defineStore("tip", {
   state: () => ({
-    billTotal: "",
-    customTip: "",
-    numberOfPeople: "",
-    tipAmountPerPerson: 0,
-    totalPerPerson: 0,
+    billTotal: null,
+    customTip: null,
+    numberOfPeople: null,
+    tipAmountPerson: 0,
+    totalPerson: 0,
   }),
   actions: {
     setBillTotal(value) {
-      this.billTotal = value;
+      this.billTotal = Number(value);
     },
     setCustomTip(value) {
-      this.customTip = value;
+      this.customTip = Number(value);
     },
     setNumberOfPeople(value) {
-      this.numberOfPeople = value;
+      this.numberOfPeople = Number(value);
     },
-    getters: {
-      totalPerPerson() {
-        const tipAmount =
-          this.customTip > 0
-            ? (this.billTotal * this.customTip) / 100
-            : (this.billTotal * this.tipPercentages[this.customTip]) / 100;
+  },
+  getters: {
+    tipAmountPerPerson(state) {
+      const tipAmount =
+        state.customTip > 0
+          ? (state.billTotal * state.customTip) / 100
+          : (state.billTotal * this.tipPercentages[state.customTip]) / 100;
 
-        return (this.billTotal + tipAmount) / this.numberOfPeople;
-      },
-      tipAmountPerPerson() {
-        const tipAmount =
-          this.customTip > 0
-            ? (this.billTotal * this.customTip) / 100
-            : (this.billTotal * this.tipPercentages[this.customTip]) / 100;
+      return tipAmount / state.numberOfPeople;
+    },
 
-        return tipAmount / this.numberOfPeople;
-      },
-      tipPercentages() {
-        return [5, 10, 15, 25, 50];
-      },
+    totalPerPerson(state) {
+      const tipAmount =
+        state.customTip > 0
+          ? (state.billTotal * state.customTip) / 100
+          : (state.billTotal * this.tipPercentages[state.customTip]) / 100;
+
+      return (
+        state.billTotal / state.numberOfPeople +
+        tipAmount / state.numberOfPeople
+      );
+    },
+    tipPercentages() {
+      return [5, 10, 15, 25, 50];
     },
   },
 });
