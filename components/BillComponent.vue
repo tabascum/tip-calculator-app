@@ -66,8 +66,8 @@ const tipPercentages = computed(() => myTipStore.tipPercentages);
 const calculateTip = (percentage) => {
   myTipStore.setCustomTip(percentage);
 
-  myTipStore.tipAmountPerPerson();
-  myTipStore.totalPerPerson();
+  myTipStore.tipAmountPerson();
+  myTipStore.totalPerson();
 };
 </script>
 
