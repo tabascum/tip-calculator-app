@@ -6,21 +6,32 @@
           <p>Tip Amount</p>
           <p>/ per person</p>
         </div>
-        <p class="total">$0.00</p>
+        <p class="total">${{ resultTipStore.tipAmountPerPerson }}</p>
       </div>
       <div class="tip-content">
         <div class="text">
           <p>Total</p>
           <p>/ per person</p>
         </div>
-        <p class="total">$0.00</p>
+        <p class="total">${{ resultTipStore.totalPerPerson }}</p>
+      </div>
+      <div class="tip-content">
+        <div class="text">
+          <p>Total</p>
+          <p>/ per person</p>
+        </div>
+        <p class="total">${{ resultTipStore.tipAmountPerPerson }}</p>
       </div>
     </article>
     <button class="reset-button">RESET</button>
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import { useTipStore } from "~/stores/TipStore";
+
+const resultTipStore = useTipStore();
+</script>
 
 <style scoped>
 .tip-container {

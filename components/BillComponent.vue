@@ -10,13 +10,19 @@
             name="bill-total"
             id="bill-total"
             placeholder="0"
+            v-model="myTipStore.billTotal"
+            @input="setBillTotal"
           />
         </div>
 
         <div class="buttons-container">
           <p>Select tip %</p>
           <div class="buttons">
-            <ButtonComponent class="button-5">5%</ButtonComponent>
+            <ButtonComponent
+              @click="myTipStore.tipPercentages(5)"
+              class="button-5"
+              >5%</ButtonComponent
+            >
             <ButtonComponent class="button-10">10%</ButtonComponent>
             <ButtonComponent class="button-15">15%</ButtonComponent>
             <ButtonComponent class="button-25">25%</ButtonComponent>
@@ -26,6 +32,8 @@
               class="custom"
               type="text"
               placeholder="Custom"
+              v-model="myTipStore.customTip"
+              @input="setCustomTip"
             />
           </div>
         </div>
@@ -41,6 +49,8 @@
             name="people-total"
             id="people-total"
             placeholder="0"
+            v-model="myTipStore.numberOfPeople"
+            @input="setNumberOfPeople"
           />
         </div>
       </div>
@@ -49,32 +59,9 @@
 </template>
 
 <script setup>
-const predefinedPercentages = [10, 15, 20, 25, 30];
+import { useTipStore } from "~/stores/TipStore";
 
-let billTotal = 0;
-let tipPercentage = predefinedPercentages[0];
-let customTip = 0;
-let numPeople = 1;
-
-const tipAmount = computed(() => {
-  if (customTip) {
-    return customTip;
-  } else {
-    return billTotal * (tipPercentage / 100);
-  }
-});
-
-const totalAmount = computed(() => {
-  return billTotal + tipAmount.value;
-});
-
-const tipPerPerson = computed(() => {
-  return tipAmount.value / numPeople;
-});
-
-const totalPerPerson = computed(() => {
-  return totalAmount.value / numPeople;
-});
+const myTipStore = useTipStore();
 </script>
 
 <style scoped>
