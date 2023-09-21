@@ -4,5 +4,4 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/style/base.css"],
   modules: ["@pinia/nuxt"],
-  ssr: false,
 });
