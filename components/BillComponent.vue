@@ -19,9 +19,9 @@
           <p>Select tip %</p>
           <div class="buttons">
             <ButtonComponent
-              v-for="percentage in tipPercentages"
+              v-for="percentage in myTipStore.tipPercentages"
               :key="percentage"
-              @click="calculateTip(percentage)"
+              @click="setCustomTip(percentage)"
             >
               {{ percentage }}%
             </ButtonComponent>
@@ -61,13 +61,17 @@ import { useTipStore } from "~/stores/TipStore";
 
 const myTipStore = useTipStore();
 
-const tipPercentages = computed(() => myTipStore.tipPercentages);
+const setBillTotal = () => {
+  myTipStore.calculateTip();
+};
 
-const calculateTip = (percentage) => {
+const setCustomTip = (percentage) => {
   myTipStore.setCustomTip(percentage);
+  myTipStore.calculateTip();
+};
 
-  myTipStore.tipAmountPerson();
-  myTipStore.totalPerson();
+const setNumberOfPeople = () => {
+  myTipStore.calculateTip();
 };
 </script>
 
@@ -227,3 +231,4 @@ input.error {
   text-align: end;
 }
 </style>
+~/assets/images/stores/TipStore

@@ -4,16 +4,16 @@
       <div class="tip-content">
         <div class="text">
           <p>Tip Amount</p>
-          <p>/ per person</p>
+          <p><small>/ per person</small></p>
         </div>
-        <p class="total">${{ resultTipStore.tipAmountPerson.toFixed(2) }}</p>
+        <p class="total">${{ resultTipStore.tipAmountPerPerson }}</p>
       </div>
       <div class="tip-content">
         <div class="text">
           <p>Total</p>
-          <p>/ per person</p>
+          <p><small>/ per person</small></p>
         </div>
-        <p class="total">${{ resultTipStore.totalPerson.toFixed(2) }}</p>
+        <p class="total">${{ resultTipStore.totalPerPerson }}</p>
       </div>
     </article>
     <button class="reset-button" @click="resetFields">RESET</button>
@@ -60,10 +60,6 @@ const resetFields = () => {
   justify-content: space-between;
 }
 
-.text:nth-child(2) {
-  font-weight: lighter !important;
-}
-
 .total {
   font-size: 2rem;
   color: var(--strong-cyan);
@@ -89,5 +85,11 @@ const resetFields = () => {
   .tip-container {
     width: 100%;
   }
+
+  .tip-wrapper {
+    gap: 1rem;
+    margin-block-end: 1.5rem;
+  }
 }
 </style>
+~/assets/images/stores/TipStore

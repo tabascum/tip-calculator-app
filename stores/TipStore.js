@@ -6,41 +6,30 @@ export const useTipStore = defineStore("tip", {
     billTotal: null,
     customTip: null,
     numberOfPeople: null,
-    tipAmountPerson: 0,
-    totalPerson: 0,
+    tipAmountPerPerson: null,
+    totalPerPerson: null,
   }),
   actions: {
     setBillTotal(value) {
-      this.billTotal = Number(value);
+      this.billTotal = parseFloat(value);
     },
     setCustomTip(value) {
-      this.customTip = Number(value);
+      this.customTip = parseFloat(value);
     },
     setNumberOfPeople(value) {
-      this.numberOfPeople = Number(value);
+      this.numberOfPeople = parseFloat(value);
+    },
+    calculateTip() {
+      const tipAmount =
+        this.customTip > 0
+          ? (this.billTotal * this.customTip) / 100
+          : this.billTotal * 0.1; // Use 10% como padrão
+
+      this.tipAmountPerPerson = tipAmount / this.numberOfPeople;
+      this.totalPerPerson = (this.billTotal + tipAmount) / this.numberOfPeople;
     },
   },
   getters: {
-    tipAmountPerPerson(state) {
-      const tipAmount =
-        state.customTip > 0
-          ? (state.billTotal * state.customTip) / 100
-          : (state.billTotal * this.tipPercentages[state.customTip]) / 100;
-
-      return tipAmount / state.numberOfPeople;
-    },
-
-    totalPerPerson(state) {
-      const tipAmount =
-        state.customTip > 0
-          ? (state.billTotal * state.customTip) / 100
-          : (state.billTotal * this.tipPercentages[state.customTip]) / 100;
-
-      return (
-        state.billTotal / state.numberOfPeople +
-        tipAmount / state.numberOfPeople
-      );
-    },
     tipPercentages() {
       return [5, 10, 15, 25, 50];
     },
