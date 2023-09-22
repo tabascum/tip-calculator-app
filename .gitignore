@@ -1,10 +1,11 @@
 # Nuxt dev/build outputs
 .netlify
-.output
 .data
 .nuxt
 .nitro
 .cache
+dist
+public
 
 # Node dependencies
 node_modules

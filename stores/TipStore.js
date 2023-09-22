@@ -6,8 +6,8 @@ export const useTipStore = defineStore("tip", {
     billTotal: null,
     customTip: null,
     numberOfPeople: null,
-    tipAmountPerPerson: 0,
-    totalPerPerson: 0,
+    tipAmountPerPerson: "0.00",
+    totalPerPerson: "0.00",
   }),
   actions: {
     setBillTotal(value) {
@@ -26,13 +26,16 @@ export const useTipStore = defineStore("tip", {
             ? (this.billTotal * this.customTip) / 100
             : this.billTotal * 0.1;
 
-        this.tipAmountPerPerson = tipAmount / this.numberOfPeople;
+        this.tipPerPerson = tipAmount / this.numberOfPeople;
         this.totalPerPerson =
           this.billTotal / this.numberOfPeople +
           tipAmount / this.numberOfPeople;
+
+        this.tipAmountPerPerson = tipPerPerson.toFixed(2);
+        this.totalPerPerson = totalPerPerson.toFixed(2);
       } else {
-        this.tipAmountPerPerson = 0;
-        this.totalPerPerson = 0;
+        this.tipAmountPerPerson = "0.00";
+        this.totalPerPerson = "0.00";
       }
     },
   },
