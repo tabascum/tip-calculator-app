@@ -1,4 +1,3 @@
-// store/tipStore.js
 import { defineStore } from "pinia";
 
 export const useTipStore = defineStore("tip", {
@@ -26,13 +25,11 @@ export const useTipStore = defineStore("tip", {
             ? (this.billTotal * this.customTip) / 100
             : this.billTotal * 0.1;
 
-        this.tipPerPerson = tipAmount / this.numberOfPeople;
-        this.totalPerPerson =
+        this.tipAmountPerPerson = (tipAmount / this.numberOfPeople).toFixed(2);
+        this.totalPerPerson = (
           this.billTotal / this.numberOfPeople +
-          tipAmount / this.numberOfPeople;
-
-        this.tipAmountPerPerson = tipPerPerson.toFixed(2);
-        this.totalPerPerson = totalPerPerson.toFixed(2);
+          tipAmount / this.numberOfPeople
+        ).toFixed(2);
       } else {
         this.tipAmountPerPerson = "0.00";
         this.totalPerPerson = "0.00";
