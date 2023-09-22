@@ -26,9 +26,9 @@ import { useTipStore } from "~/stores/TipStore";
 const resultTipStore = useTipStore();
 
 const resetFields = () => {
-  resultTipStore.setBillTotal(null);
-  resultTipStore.setCustomTip(null);
-  resultTipStore.setNumberOfPeople(null);
+  resultTipStore.setBillTotal(0);
+  resultTipStore.setCustomTip(0);
+  resultTipStore.setNumberOfPeople(0);
 };
 </script>
 
