@@ -1,63 +1,46 @@
-# Nuxt 3 Minimal Starter
+# Frontend Mentor - Tip calculator app solution
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Setup
+## Table of contents
 
-Make sure to install the dependencies:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-```bash
-# npm
-npm install
+## Overview
 
-# pnpm
-pnpm install
+### The challenge
 
-# yarn
-yarn install
-```
+Users should be able to:
 
-## Development Server
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Calculate the correct tip and total cost of the bill per person
 
-Start the development server on `http://localhost:3000`:
+### Screenshot
 
-```bash
-# npm
-npm run dev
+![](./public/screenshot.png)
 
-# pnpm
-pnpm run dev
+### Links
 
-# yarn
-yarn dev
-```
+- Solution URL: [Tip Calculator](https://github.com/tabascum/tip-calculator-app)
+- Live Site URL: [Tip Calculator](https://tabascum-tip-calculator-app.vercel.app/)
 
-## Production
+## My process
 
-Build the application for production:
+### Built with
 
-```bash
-# npm
-npm run build
+- Semantic HTML5 markup
+- CSS Grid
+- CSS custom properties
+- [Nuxt](https://nuxt.com/) - JS framework
+- [Pinia](https://pinia.vuejs.org/) - For state management
 
-# pnpm
-pnpm run build
+## Author
 
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Frontend Mentor - [@tabascum](https://www.frontendmentor.io/profile/tabascum)
